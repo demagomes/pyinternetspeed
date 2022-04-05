@@ -1,3 +1,4 @@
+# Ademar Gomes - 05/04/2022 15:46
 # pyinternetspeed
 Standalone, multi-platform, continuous internet speed test
 
@@ -12,3 +13,5 @@ Standalone, multi-platform, continuous internet speed test
     - pip install speedtest-cli
 
 - To run the program: python3 main.py
+
+
