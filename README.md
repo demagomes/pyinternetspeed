@@ -1,4 +1,5 @@
 # Ademar Gomes - 05/04/2022 15:46
+# Catherine Brugge
 # pyinternetspeed
 Standalone, multi-platform, continuous internet speed test
 
