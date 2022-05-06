@@ -1,4 +1,6 @@
 import speedtest
+import time
+import csv
 
 s = speedtest.Speedtest()
 
@@ -9,4 +11,17 @@ umbps = s.upload() / 1000000
 
 results = s.results.dict()
 
-print('Download Speed (mbps): ' + str(round(dmbps)) + '|' + 'Upload Speed (mbps): ' + str(round(umbps)) + '|' + 'Ping: ' + str(results["ping"]))
+with open('speed_results.csv',"w", newline='') as speedList:
+    write = csv.DictWriter(speedList,fieldnames=['Time','Download Speed (mbps)','Upload Speed (mbps)','Ping'])   
+    write.writeheader()   
+    while True:             
+        write.writerow({'Time': str(time.asctime()),'Download Speed (mbps)': str(round(dmbps)),'Upload Speed (mbps)': str(round(umbps)),'Ping': str(results["ping"])})
+        time.sleep(30) 
+        break 
+
+    #print('Time: ' + str(time.asctime())  + '|' + 'Download Speed (mbps): ' + str(round(dmbps)) + '|' + 'Upload Speed (mbps): ' + str(round(umbps)) + '|' + 'Ping: ' + str(results["ping"]))
+    
+#print('Download Speed (mbps): ' + str(round(dmbps)) + '|' + 'Upload Speed (mbps): ' + str(round(umbps)) + '|' + 'Ping: ' + str(results["ping"]))
+
+
+#          write.writerow({'Id':str(c),'Country':row['Country'],'Capital':row['Capital'].strip()})
