@@ -10,6 +10,8 @@ dmbps = s.download() / 1000000
 umbps = s.upload() / 1000000
 
 results = s.results.dict()
+starttime = time.time()
+
 
 with open('speed_results.csv',"w", newline='') as speedList:
     write = csv.DictWriter(speedList,fieldnames=['Time','Download Speed (mbps)','Upload Speed (mbps)','Ping'])   
