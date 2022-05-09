@@ -26,4 +26,3 @@ with open('speed_results.csv',"w", newline='') as speedList:
 #print('Download Speed (mbps): ' + str(round(dmbps)) + '|' + 'Upload Speed (mbps): ' + str(round(umbps)) + '|' + 'Ping: ' + str(results["ping"]))
 
 
-#          write.writerow({'Id':str(c),'Country':row['Country'],'Capital':row['Capital'].strip()})
