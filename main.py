@@ -26,3 +26,6 @@ with open('speed_results.csv',"w", newline='') as speedList:
 #print('Download Speed (mbps): ' + str(round(dmbps)) + '|' + 'Upload Speed (mbps): ' + str(round(umbps)) + '|' + 'Ping: ' + str(results["ping"]))
 
 
+# def getfilename():
+#     today = datetime.date.today().strftime("%d-%m-%Y")
+#     return today + '_internetspeedtestresults.csv'
