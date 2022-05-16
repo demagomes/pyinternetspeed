@@ -1,6 +1,9 @@
 import speedtest
 import time
 import csv
+import datetime
+import os
+
 
 s = speedtest.Speedtest()
 
@@ -13,19 +16,39 @@ results = s.results.dict()
 starttime = time.time()
 
 
-with open('speed_results.csv',"w", newline='') as speedList:
-    write = csv.DictWriter(speedList,fieldnames=['Time','Download Speed (mbps)','Upload Speed (mbps)','Ping'])   
-    write.writeheader()   
-    while True:             
-        write.writerow({'Time': str(time.asctime()),'Download Speed (mbps)': str(round(dmbps)),'Upload Speed (mbps)': str(round(umbps)),'Ping': str(results["ping"])})
-        time.sleep(30) 
-        break 
+def getfilename():
+    today = datetime.date.today().strftime("%d-%m-%Y")
+    return today + '_internetspeedtestresults.csv'
 
-    #print('Time: ' + str(time.asctime())  + '|' + 'Download Speed (mbps): ' + str(round(dmbps)) + '|' + 'Upload Speed (mbps): ' + str(round(umbps)) + '|' + 'Ping: ' + str(results["ping"]))
-    
-#print('Download Speed (mbps): ' + str(round(dmbps)) + '|' + 'Upload Speed (mbps): ' + str(round(umbps)) + '|' + 'Ping: ' + str(results["ping"]))
+file =getfilename()
+#print(file)
+
+def saveresults(download,upload,ping):    
+    filename = getfilename()
+    fileexists = os.path.exists(filename)
+  
+
+def testspeed():
+    s=speedtest.Speedtest
 
 
-# def getfilename():
-#     today = datetime.date.today().strftime("%d-%m-%Y")
-#     return today + '_internetspeedtestresults.csv'
+if not os.path.exists(file):
+    with open(file,"w", newline='') as speedResults:   
+        write = csv.DictWriter(speedResults,fieldnames=['Time','Download Speed (mbps)','Upload Speed (mbps)','Ping'])   
+        write.writeheader()  
+        while True:            
+            write.writerow({'Time': str(time.asctime()),'Download Speed (mbps)': str(round(dmbps)),'Upload Speed (mbps)': str(round(umbps)),'Ping': str(results["ping"])})
+            time.sleep(300)
+else:
+    with open(file,"a", newline='') as saveresults:   
+        write = csv.DictWriter(saveresults,fieldnames=['Time','Download Speed (mbps)','Upload Speed (mbps)','Ping'])   
+         
+        while True:            
+            write.writerow({'Time': str(time.asctime()),'Download Speed (mbps)': str(round(dmbps)),'Upload Speed (mbps)': str(round(umbps)),'Ping': str(results["ping"])})
+            time.sleep(300)
+        #print('Date: ' + float(datetime.date.today())  + '|' + 'Start time: ' + starttime + 'Download Speed (mbps): ' + str(round(dmbps)) + '|' + 'Upload Speed (mbps): ' + str(round(umbps)) + '|' + 'Ping: ' + str(results["ping"]))
+        #print('Start time: ' + starttime + 'Download Speed (mbps): ' + str(round(dmbps)) + '|' + 'Upload Speed (mbps): ' + str(round(umbps)) + '|' + 'Ping: ' + str(results["ping"]))
+        
+print('Download Speed (mbps): ' + str(round(dmbps)) + '|' + 'Upload Speed (mbps): ' + str(round(umbps)) + '|' + 'Ping: ' + str(results["ping"]))
+
+
