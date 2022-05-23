@@ -32,6 +32,7 @@ def saveresults(download,upload,ping):
 def testspeed():
     s=speedtest.Speedtest
 
+printResults = 'Date: ' + strftime("%Y-%m-%d %H:%M:%S", gmtime()) + '|' + 'Download Speed (mbps): ' + str(round(dmbps)) + '|' + 'Upload Speed (mbps): ' + str(round(umbps)) + '|' + 'Ping: ' + str(results["ping"])
 
 
 if not os.path.exists(file):
@@ -40,7 +41,7 @@ if not os.path.exists(file):
         write.writeheader()  
         while True:            
             write.writerow({'Time': str(time.asctime()),'Download Speed (mbps)': str(round(dmbps)),'Upload Speed (mbps)': str(round(umbps)),'Ping': str(results["ping"])})
-            print('Date: ' + strftime("%Y-%m-%d %H:%M:%S", gmtime()) + '|' + 'Download Speed (mbps): ' + str(round(dmbps)) + '|' + 'Upload Speed (mbps): ' + str(round(umbps)) + '|' + 'Ping: ' + str(results["ping"]))
+            print(printResults)
             time.sleep(300)
 else:
     with open(file,"a", newline='') as saveresults:   
@@ -48,7 +49,7 @@ else:
          
         while True:            
             write.writerow({'Time': str(time.asctime()),'Download Speed (mbps)': str(round(dmbps)),'Upload Speed (mbps)': str(round(umbps)),'Ping': str(results["ping"])})
-            print('Date: ' + strftime("%Y-%m-%d %H:%M:%S", gmtime()) + '|' + 'Download Speed (mbps): ' + str(round(dmbps)) + '|' + 'Upload Speed (mbps): ' + str(round(umbps)) + '|' + 'Ping: ' + str(results["ping"]))
+            print(printResults)
             time.sleep(300)
       
 
