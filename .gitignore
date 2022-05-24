@@ -6,6 +6,11 @@ __pycache__/
 # C extensions
 *.so
 
+# remove csv log files from repo
+*.csv
+.csv
+/*.csv
+
 # Distribution / packaging
 .Python
 build/
@@ -129,7 +134,3 @@ dmypy.json
 .pyre/
 
 
-# remove csv log files from repo
-*.csv
-.csv
-/*.csv
