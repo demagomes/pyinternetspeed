@@ -132,3 +132,4 @@ dmypy.json
 # remove csv log files from repo
 *.csv
 .csv
+/*.csv
