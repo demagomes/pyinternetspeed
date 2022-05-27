@@ -6,6 +6,8 @@ import os
 from time import gmtime, strftime
 
 
+
+# from line 11 to 19 + line 36 to 52 should be one single function 
 s = speedtest.Speedtest()
 
 # s.get_servers(servers)
@@ -21,20 +23,22 @@ def getfilename():
     today = datetime.date.today().strftime("%d-%m-%Y")
     return today + '_internetspeedtestresults.csv'
 
-file =getfilename()
-#print(file)
-
 def saveresults(download,upload,ping):    
     filename = getfilename()
     fileexists = os.path.exists(filename)
-  
-
+ 
 def testspeed():
     s=speedtest.Speedtest
 
+
 printResults = 'Date: ' + strftime("%Y-%m-%d %H:%M:%S", gmtime()) + '|' + 'Download Speed (mbps): ' + str(round(dmbps)) + '|' + 'Upload Speed (mbps): ' + str(round(umbps)) + '|' + 'Ping: ' + str(results["ping"])
 
+# while True:            
+#     callnewfunction()
+#     time.sleep(300)
 
+
+file =getfilename()
 if not os.path.exists(file):
     with open(file,"w", newline='') as speedResults:   
         write = csv.DictWriter(speedResults,fieldnames=['Time','Download Speed (mbps)','Upload Speed (mbps)','Ping'])   
@@ -52,5 +56,7 @@ else:
             print(printResults)
             time.sleep(300)
       
+
+
 
 
