@@ -5,56 +5,47 @@ import datetime
 import os
 from time import gmtime, strftime
 
-
-
-# from line 11 to 19 + line 36 to 52 should be one single function 
-s = speedtest.Speedtest()
-
-# s.get_servers(servers)
-s.get_best_server()
-dmbps = s.download() / 1000000
-umbps = s.upload() / 1000000
-
-results = s.results.dict()
-starttime = time.time()
-
-
 def getfilename():
     today = datetime.date.today().strftime("%d-%m-%Y")
     return today + '_internetspeedtestresults.csv'
 
-def saveresults(download,upload,ping):    
+def saveresultstocsv(download,upload,ping):
     filename = getfilename()
     fileexists = os.path.exists(filename)
+    fieldnames = ['timestamp','download', 'upload','ping']
+
+    if not fileexists:
+        with open(filename,"w", newline='') as speedResults:   
+            write = csv.DictWriter(speedResults,fieldnames)   
+        write.writeheader()              
+        write.writerow({'timestamp':time.asctime(),'download': download, 'upload': upload, 'ping': ping})
+        
+    else:
+        with open(filename,"a", newline='') as speedResults:   
+            write = csv.DictWriter(speedResults,fieldnames)
+            write.writerow({'timestamp':time.asctime(),'download': download, 'upload': upload, 'ping': ping})
+            
  
-def testspeed():
-    s=speedtest.Speedtest
+def speedTest():
+    s = speedtest.Speedtest()
+    servers = []
+    s.get_servers(servers)
+    s.get_best_server()
+    dmbps = s.download() / 1000000
+    umbps = s.upload() / 1000000
+    results_dict = s.results.dict()   
+    printResults = 'Date: ' + strftime("%Y-%m-%d %H:%M:%S", gmtime()) + '|' + 'Download Speed (mbps): ' + str(round(dmbps)) + '|' + 'Upload Speed (mbps): ' + str(round(umbps)) + '|' + 'Ping: ' + str(results_dict["ping"])
+    print(printResults)
+    saveresultstocsv(str(round(dmbps)),str(round(umbps)),str(results_dict["ping"]))  
+   
+while True:
+    speedTest()
+    time.sleep(300)
 
 
-printResults = 'Date: ' + strftime("%Y-%m-%d %H:%M:%S", gmtime()) + '|' + 'Download Speed (mbps): ' + str(round(dmbps)) + '|' + 'Upload Speed (mbps): ' + str(round(umbps)) + '|' + 'Ping: ' + str(results["ping"])
-
-# while True:            
-#     callnewfunction()
-#     time.sleep(300)
 
 
-file =getfilename()
-if not os.path.exists(file):
-    with open(file,"w", newline='') as speedResults:   
-        write = csv.DictWriter(speedResults,fieldnames=['Time','Download Speed (mbps)','Upload Speed (mbps)','Ping'])   
-        write.writeheader()  
-        while True:            
-            write.writerow({'Time': str(time.asctime()),'Download Speed (mbps)': str(round(dmbps)),'Upload Speed (mbps)': str(round(umbps)),'Ping': str(results["ping"])})
-            print(printResults)
-            time.sleep(300)
-else:
-    with open(file,"a", newline='') as saveresults:   
-        write = csv.DictWriter(saveresults,fieldnames=['Time','Download Speed (mbps)','Upload Speed (mbps)','Ping'])   
-         
-        while True:            
-            write.writerow({'Time': str(time.asctime()),'Download Speed (mbps)': str(round(dmbps)),'Upload Speed (mbps)': str(round(umbps)),'Ping': str(results["ping"])})
-            print(printResults)
-            time.sleep(300)
+
       
 
 
