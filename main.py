@@ -17,8 +17,8 @@ def saveresultstocsv(download,upload,ping):
     if not fileexists:
         with open(filename,"w", newline='') as speedResults:   
             write = csv.DictWriter(speedResults,fieldnames)   
-        write.writeheader()              
-        write.writerow({'timestamp':time.asctime(),'download': download, 'upload': upload, 'ping': ping})
+            write.writeheader()              
+            write.writerow({'timestamp':time.asctime(),'download': download, 'upload': upload, 'ping': ping})
         
     else:
         with open(filename,"a", newline='') as speedResults:   
