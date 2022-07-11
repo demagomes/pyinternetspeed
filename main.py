@@ -14,17 +14,14 @@ def saveresultstocsv(download,upload,ping):
     fileexists = os.path.exists(filename)
     fieldnames = ['timestamp','download', 'upload','ping']
 
-    if not fileexists:
-        with open(filename,"w", newline='') as speedResults:   
-            write = csv.DictWriter(speedResults,fieldnames)   
-            write.writeheader()              
-            write.writerow({'timestamp':time.asctime(),'download': download, 'upload': upload, 'ping': ping})
+    with open(filename, 'a', newline='') as csvfile:
+        fieldnames = ['timestamp','download', 'upload','ping']
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+        if not fileexists:
+            writer.writeheader()
         
-    else:
-        with open(filename,"a", newline='') as speedResults:   
-            write = csv.DictWriter(speedResults,fieldnames)
-            write.writerow({'timestamp':time.asctime(),'download': download, 'upload': upload, 'ping': ping})
-            
+        writer.writerow({'timestamp':time.asctime(),'download': download, 'upload': upload, 'ping': ping})   
  
 def speedTest():
     s = speedtest.Speedtest()
