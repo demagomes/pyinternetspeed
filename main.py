@@ -35,6 +35,12 @@ def speedTest():
     print(printResults)
     saveresultstocsv(str(round(dmbps)),str(round(umbps)),str(results_dict["ping"]))  
    
+def printheader():
+    print('Python Internet Speed Test')
+    print('https://github.com/demagomes/pyinternetspeed')
+
+# Main Execution block
+printheader()
 while True:
     speedTest()
     time.sleep(300)
