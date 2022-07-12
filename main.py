@@ -5,6 +5,13 @@ import datetime
 import os
 from time import gmtime, strftime
 
+class terminalcolours:
+    HEADER = '\033[95m'
+    INFO = '\033[92m'
+    WARNING = '\033[93m'
+    ERROR = '\033[91m'
+    ENDC = '\033[0m'
+
 def getfilename():
     today = datetime.date.today().strftime("%d-%m-%Y")
     return today + '_internetspeedtestresults.csv'
@@ -41,8 +48,19 @@ def speedTest():
     print('Waiting for next run......', end='\r') 
    
 def printheader():
-    print('Python Internet Speed Test')
-    print('https://github.com/demagomes/pyinternetspeed')
+    cprint('Python Internet Speed Test','HEADER')
+    cprint('https://github.com/demagomes/pyinternetspeed','INFO')
+
+def cprint(message, type):
+    if type == 'HEADER':
+        print(f"{terminalcolours.HEADER}{message}{terminalcolours.ENDC}")
+    elif type == 'INFO':
+        print(f"{terminalcolours.INFO}{message}{terminalcolours.ENDC}")
+    elif type == 'WARNING':
+        print(f"{terminalcolours.WARNING}{message}{terminalcolours.ENDC}")
+    elif type == 'ERROR':
+        print(f"{terminalcolours.ERROR}{message}{terminalcolours.ENDC}")
+
 
 # Main Execution block
 printheader()
