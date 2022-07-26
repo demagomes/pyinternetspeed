@@ -66,7 +66,7 @@ def cprint(message, type):
 printheader()
 while True:
     speedTest()
-    time.sleep(300)
+    time.sleep(900)
 
 
 
