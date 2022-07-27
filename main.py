@@ -32,7 +32,14 @@ def saveresultstocsv(download,upload,ping):
  
 def speedTest():
     print('Testing Internet Speeed...', end='\r')
-    s = speedtest.Speedtest()
+
+    try:
+        s = speedtest.Speedtest()
+    except speedtest.ConfigRetrievalError as err:
+        print()
+        cprint('Error while running speed test: {0}'.format(err),'ERROR')
+        return
+
     servers = []
     print('Getting Best Server.......', end='\r')
     s.get_servers(servers)
