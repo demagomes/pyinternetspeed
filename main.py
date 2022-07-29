@@ -36,7 +36,6 @@ def speedTest():
     try:
         s = speedtest.Speedtest()
     except speedtest.ConfigRetrievalError as err:
-        print()
         cprint('Error while running speed test: {0}'.format(err),'ERROR')
         return
 
