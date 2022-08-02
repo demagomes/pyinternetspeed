@@ -43,7 +43,14 @@ def speedTest():
     print('Getting Best Server.......', end='\r')
     s.get_servers(servers)
     print('Running Speed Test........', end='\r')
-    s.get_best_server()
+
+    try:
+        s.get_best_server()
+    except speedtest.SpeedtestBestServerFailure as err:
+        cprint('Error while getting best server: {0}'.format(err),'ERROR')
+        return
+
+
     dmbps = s.download() / 1000000
     umbps = s.upload() / 1000000
     print('Working  on results.......', end='\r')
