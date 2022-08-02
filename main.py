@@ -36,7 +36,7 @@ def speedTest():
     try:
         s = speedtest.Speedtest()
     except speedtest.ConfigRetrievalError as err:
-        cprint('Error while running speed test: {0}'.format(err),'ERROR')
+        cprint('Date: ' + time.asctime() + '|' + 'Error while running speed test: {0}'.format(err),'ERROR')
         return
 
     servers = []
@@ -47,7 +47,7 @@ def speedTest():
     try:
         s.get_best_server()
     except speedtest.SpeedtestBestServerFailure as err:
-        cprint('Error while getting best server: {0}'.format(err),'ERROR')
+        cprint('Date: ' + time.asctime() + '|' + 'Error while getting best server: {0}'.format(err),'ERROR')
         return
 
 
