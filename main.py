@@ -84,6 +84,8 @@ try:
         print('Waiting for next run......', end='\r') 
         time.sleep(900)
 except KeyboardInterrupt:
+    # remove the C^ output from console.
+    print('', end='\r')
     pass
 
 
