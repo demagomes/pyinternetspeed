@@ -63,6 +63,7 @@ def speedTest():
 def printheader():
     cprint('Python Internet Speed Test','HEADER')
     cprint('https://github.com/demagomes/pyinternetspeed','INFO')
+    cprint('Please press Control+C to end the program','INFO')
 
 def cprint(message, type):
     if type == 'HEADER':
@@ -77,12 +78,13 @@ def cprint(message, type):
 
 # Main Execution block
 printheader()
-while True:
-    speedTest()
-    print('Waiting for next run......', end='\r') 
-    time.sleep(900)
-
-
+try:
+    while True:
+        speedTest()
+        print('Waiting for next run......', end='\r') 
+        time.sleep(900)
+except KeyboardInterrupt:
+    pass
 
 
 
