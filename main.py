@@ -86,6 +86,7 @@ try:
 except KeyboardInterrupt:
     # remove the C^ output from console.
     print('', end='\r')
+    print('Thanks for using Python Internet Speed Test')
     pass
 
 
