@@ -5,7 +5,7 @@ import datetime
 import os
 from time import gmtime, strftime
 
-class terminalcolours:
+class TerminalColours:
     HEADER = '\033[95m'
     INFO = '\033[92m'
     WARNING = '\033[93m'
@@ -30,7 +30,7 @@ def saveresultstocsv(download,upload,ping):
         
         writer.writerow({'timestamp':strftime("%Y-%m-%d %H:%M:%S", gmtime()),'download': download, 'upload': upload, 'ping': ping})   
  
-def speedTest():
+def speed_test():
     print('Testing Internet Speeed...', end='\r')
 
     try:
@@ -67,20 +67,20 @@ def printheader():
 
 def cprint(message, type):
     if type == 'HEADER':
-        print(f"{terminalcolours.HEADER}{message}{terminalcolours.ENDC}")
+        print(f"{TerminalColours.HEADER}{message}{TerminalColours.ENDC}")
     elif type == 'INFO':
-        print(f"{terminalcolours.INFO}{message}{terminalcolours.ENDC}")
+        print(f"{TerminalColours.INFO}{message}{TerminalColours.ENDC}")
     elif type == 'WARNING':
-        print(f"{terminalcolours.WARNING}{message}{terminalcolours.ENDC}")
+        print(f"{TerminalColours.WARNING}{message}{TerminalColours.ENDC}")
     elif type == 'ERROR':
-        print(f"{terminalcolours.ERROR}{message}{terminalcolours.ENDC}")
+        print(f"{TerminalColours.ERROR}{message}{TerminalColours.ENDC}")
 
 
 # Main Execution block
 printheader()
 try:
     while True:
-        speedTest()
+        speed_test()
         print('Waiting for next run......', end='\r') 
         time.sleep(900)
 except KeyboardInterrupt:
