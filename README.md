@@ -6,7 +6,9 @@ Standalone, multi-platform, continuous internet speed test
 - Make sure Python is installed. I am using Python 3.9.7.
     - python3 --version
     - you should see similar output:
-    ```Python 3.9.7```
+    ```
+    Python 3.9.7
+    ```
 
 - Install speedtest-cli py library
     - pip install speedtest-cli
