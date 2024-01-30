@@ -76,17 +76,19 @@ def cprint(message, type):
 
 
 # Main Execution block
-printheader()
-try:
-    while True:
-        speed_test()
-        print('Waiting for next run......', end='\r') 
-        time.sleep(900)
-except KeyboardInterrupt:
-    # remove the C^ output from console.
-    print('', end='\r')
-    print('Thanks for using Python Internet Speed Test')
-    pass
+# It also prevents from running if imported.
+if __name__ == "__main__":
+    printheader()
+    try:
+        while True:
+            speed_test()
+            print('Waiting for next run......', end='\r') 
+            time.sleep(900)
+    except KeyboardInterrupt:
+        # remove the C^ output from console.
+        print('', end='\r')
+        print('Thanks for using Python Internet Speed Test')
+        pass
 
 
 

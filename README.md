@@ -22,3 +22,7 @@ Standalone, multi-platform, continuous internet speed test
 ```
 pip3 install -U pytest
 ```
+- Run tests with pytest command
+```
+pytest
+```

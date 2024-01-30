@@ -1,4 +1,5 @@
 import main
+import datetime
 
 # Test printheader() output
 def test_print_header(capsys):
@@ -30,3 +31,7 @@ def test_cprint(capsys):
 
      # test output
     assert captured.out== '\x1b[95mUnit Test Header\x1b[0m\n'
+
+def test_getfilename():
+    today = datetime.date.today().strftime("%d-%m-%Y")
+    assert main.getfilename() == today + '_internetspeedtestresults.csv'
