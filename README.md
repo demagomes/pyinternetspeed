@@ -16,3 +16,9 @@ Standalone, multi-platform, continuous internet speed test
 - To run the program: python3 main.py
 
 
+# Unit Tests
+
+- Install pytest
+```
+pip3 install -U pytest
+```
