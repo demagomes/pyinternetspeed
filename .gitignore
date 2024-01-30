@@ -136,3 +136,5 @@ dmypy.json
 # MAC OS specific files
 .DS_Store
 
+drafts.py
+.gitignore
