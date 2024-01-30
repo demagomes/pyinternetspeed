@@ -16,8 +16,7 @@ def getfilename():
     today = datetime.date.today().strftime("%d-%m-%Y")
     return today + '_internetspeedtestresults.csv'
 
-def saveresultstocsv(download,upload,ping):
-    filename = getfilename()
+def saveresultstocsv(filename,download,upload,ping):
     fileexists = os.path.exists(filename)
     fieldnames = ['timestamp','download', 'upload','ping']
 
@@ -57,7 +56,7 @@ def speed_test():
     results_dict = s.results.dict()   
     printResults = 'Date: ' + time.asctime() + '|' + 'Download Speed (mbps): ' + str(round(dmbps)) + '|' + 'Upload Speed (mbps): ' + str(round(umbps)) + '|' + 'Ping: ' + str(results_dict["ping"])
     print(printResults)
-    saveresultstocsv(str(round(dmbps)),str(round(umbps)),str(results_dict["ping"])) 
+    saveresultstocsv(getfilename(),str(round(dmbps)),str(round(umbps)),str(results_dict["ping"])) 
    
 def printheader():
     cprint('Python Internet Speed Test','HEADER')
