@@ -3,26 +3,20 @@ import time
 import csv
 import datetime
 import os
+from classes.TerminalColours import TerminalColours as tc
 from time import gmtime, strftime
-
-class TerminalColours:
-    HEADER = '\033[95m'
-    INFO = '\033[92m'
-    WARNING = '\033[93m'
-    ERROR = '\033[91m'
-    ENDC = '\033[0m'
 
 class SpeedTest:
 
     def cprint(self, message, type):
         if type == 'HEADER':
-            print(f"{TerminalColours.HEADER}{message}{TerminalColours.ENDC}")
+            print(f"{tc.HEADER}{message}{tc.ENDC}")
         elif type == 'INFO':
-            print(f"{TerminalColours.INFO}{message}{TerminalColours.ENDC}")
+            print(f"{tc.INFO}{message}{tc.ENDC}")
         elif type == 'WARNING':
-            print(f"{TerminalColours.WARNING}{message}{TerminalColours.ENDC}")
+            print(f"{tc.WARNING}{message}{tc.ENDC}")
         elif type == 'ERROR':
-            print(f"{TerminalColours.ERROR}{message}{TerminalColours.ENDC}")
+            print(f"{tc.ERROR}{message}{tc.ENDC}")
 
     def getfilename(self):
         today = datetime.date.today().strftime("%d-%m-%Y")
