@@ -16,8 +16,7 @@ def getfilename():
     today = datetime.date.today().strftime("%d-%m-%Y")
     return today + '_internetspeedtestresults.csv'
 
-def saveresultstocsv(download,upload,ping):
-    filename = getfilename()
+def saveresultstocsv(filename,download,upload,ping):
     fileexists = os.path.exists(filename)
     fieldnames = ['timestamp','download', 'upload','ping']
 
@@ -57,8 +56,7 @@ def speed_test():
     results_dict = s.results.dict()   
     printResults = 'Date: ' + time.asctime() + '|' + 'Download Speed (mbps): ' + str(round(dmbps)) + '|' + 'Upload Speed (mbps): ' + str(round(umbps)) + '|' + 'Ping: ' + str(results_dict["ping"])
     print(printResults)
-    saveresultstocsv(str(round(dmbps)),str(round(umbps)),str(results_dict["ping"])) 
-    
+    saveresultstocsv(getfilename(),str(round(dmbps)),str(round(umbps)),str(results_dict["ping"])) 
    
 def printheader():
     cprint('Python Internet Speed Test','HEADER')
@@ -77,17 +75,19 @@ def cprint(message, type):
 
 
 # Main Execution block
-printheader()
-try:
-    while True:
-        speed_test()
-        print('Waiting for next run......', end='\r') 
-        time.sleep(900)
-except KeyboardInterrupt:
-    # remove the C^ output from console.
-    print('', end='\r')
-    print('Thanks for using Python Internet Speed Test')
-    pass
+# It also prevents from running if imported.
+if __name__ == "__main__":
+    printheader()
+    try:
+        while True:
+            speed_test()
+            print('Waiting for next run......', end='\r') 
+            time.sleep(900)
+    except KeyboardInterrupt:
+        # remove the C^ output from console.
+        print('', end='\r')
+        print('Thanks for using Python Internet Speed Test')
+        pass
 
 
 
