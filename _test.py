@@ -8,8 +8,6 @@ import classes.SpeedTest as sp
 def getobjinstance():
     return sp.SpeedTest()
 
-
-
 # Test printheader() output
 def test_print_header(capsys,getobjinstance):
 

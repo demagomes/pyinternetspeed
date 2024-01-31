@@ -17,6 +17,12 @@ class SpeedTest:
             print(f"{tc.WARNING}{message}{tc.ENDC}")
         elif type == 'ERROR':
             print(f"{tc.ERROR}{message}{tc.ENDC}")
+        elif type == 'OKBLUE':
+            print(f"{tc.OKBLUE}{message}{tc.ENDC}")
+        elif type == 'OKCYAN':
+            print(f"{tc.OKCYAN}{message}{tc.ENDC}")
+        elif type == 'OKGREEN':
+            print(f"{tc.OKGREEN}{message}{tc.ENDC}")
 
     def getfilename(self):
         today = datetime.date.today().strftime("%d-%m-%Y")
@@ -61,7 +67,7 @@ class SpeedTest:
         print('Working  on results.......', end='\r')
         results_dict = s.results.dict()   
         printResults = 'Date: ' + time.asctime() + '|' + 'Download Speed (mbps): ' + str(round(dmbps)) + '|' + 'Upload Speed (mbps): ' + str(round(umbps)) + '|' + 'Ping: ' + str(results_dict["ping"])
-        print(printResults)
+        self.cprint(printResults,'OKCYAN')
         self.saveresultstocsv(self.getfilename(),str(round(dmbps)),str(round(umbps)),str(results_dict["ping"])) 
     
     def printheader(self):
