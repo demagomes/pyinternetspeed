@@ -1,13 +1,13 @@
 import csv
-import main
 import datetime
 import os
+import classes.SpeedTest as sp
 
 # Test printheader() output
 def test_print_header(capsys):
 
     # Executes function
-    main.printheader()
+    sp.printheader()
 
     # captures the output of the function using capsys from pytest
     captured = capsys.readouterr()
@@ -26,7 +26,7 @@ def test_print_header(capsys):
 def test_cprint(capsys):
 
     # Executes function
-    main.cprint('Unit Test Header','HEADER')
+    sp.cprint('Unit Test Header','HEADER')
 
     # captures the output of the function using capsys from pytest
     captured = capsys.readouterr()
@@ -37,12 +37,12 @@ def test_cprint(capsys):
 # Test getfilename function return
 def test_getfilename():
     today = datetime.date.today().strftime("%d-%m-%Y")
-    assert main.getfilename() == today + '_internetspeedtestresults.csv'
+    assert sp.getfilename() == today + '_internetspeedtestresults.csv'
 
 # Test save saveresultstocsv file contents
 def test_saveresultstocsv():
     filename = 'unittest.csv'
-    main.saveresultstocsv(filename,'100','10','1')
+    sp.saveresultstocsv(filename,'100','10','1')
 
     # test files exists
     assert os.path.exists("unittest.csv") == True
