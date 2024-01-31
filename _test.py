@@ -44,6 +44,9 @@ def test_saveresultstocsv():
     filename = 'unittest.csv'
     main.saveresultstocsv(filename,'100','10','1')
 
+    # test files exists
+    assert os.path.exists("unittest.csv") == True
+
     with open(filename, newline='') as csvfile:
         reader = csv.DictReader(csvfile)
         row = next(reader)

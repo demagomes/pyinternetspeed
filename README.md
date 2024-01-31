@@ -11,7 +11,9 @@ Standalone, multi-platform, continuous internet speed test
     ```
 
 - Install speedtest-cli py library
-    - pip install speedtest-cli
+    ```
+    pip install speedtest-cli
+    ```
 
 - To run the program: python3 main.py
 
@@ -24,5 +26,5 @@ pip3 install -U pytest
 ```
 - Run tests with pytest command
 ```
-pytest
+pytest -v
 ```
