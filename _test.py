@@ -1,13 +1,20 @@
 import csv
 import datetime
 import os
+import pytest
 import classes.SpeedTest as sp
 
+@pytest.fixture
+def getobjinstance():
+    return sp.SpeedTest()
+
+
+
 # Test printheader() output
-def test_print_header(capsys):
+def test_print_header(capsys,getobjinstance):
 
     # Executes function
-    sp.printheader()
+    getobjinstance.printheader()
 
     # captures the output of the function using capsys from pytest
     captured = capsys.readouterr()
@@ -23,10 +30,10 @@ def test_print_header(capsys):
     assert all_outputs[3] == ''
 
 # Test cprint function output
-def test_cprint(capsys):
+def test_cprint(capsys,getobjinstance):
 
     # Executes function
-    sp.cprint('Unit Test Header','HEADER')
+    getobjinstance.cprint('Unit Test Header','HEADER')
 
     # captures the output of the function using capsys from pytest
     captured = capsys.readouterr()
@@ -35,14 +42,14 @@ def test_cprint(capsys):
     assert captured.out== '\x1b[95mUnit Test Header\x1b[0m\n'
 
 # Test getfilename function return
-def test_getfilename():
+def test_getfilename(getobjinstance):
     today = datetime.date.today().strftime("%d-%m-%Y")
-    assert sp.getfilename() == today + '_internetspeedtestresults.csv'
+    assert getobjinstance.getfilename() == today + '_internetspeedtestresults.csv'
 
 # Test save saveresultstocsv file contents
-def test_saveresultstocsv():
+def test_saveresultstocsv(getobjinstance):
     filename = 'unittest.csv'
-    sp.saveresultstocsv(filename,'100','10','1')
+    getobjinstance.saveresultstocsv(filename,'100','10','1')
 
     # test files exists
     assert os.path.exists("unittest.csv") == True

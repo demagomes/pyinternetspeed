@@ -1,9 +1,11 @@
 import time
-import classes.SpeedTest as sp
+from classes.SpeedTest import SpeedTest
 
 # Main Execution block
 # It also prevents from running if imported.
 if __name__ == "__main__":
+    # instantiate speedtest class.
+    sp = SpeedTest()
     sp.printheader()
     try:
         while True:
