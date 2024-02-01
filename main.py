@@ -2,8 +2,8 @@ import time
 from classes.SpeedTest import SpeedTest
 
 # Main Execution block
-# It also prevents from running if imported.
-if __name__ == "__main__":
+# It prevents from running if imported.
+if __name__ == '__main__':
     # instantiate speedtest class.
     sp = SpeedTest()
     sp.printheader()
@@ -15,7 +15,7 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         # remove the C^ output from console.
         print('', end='\r')
-        print('Thanks for using Python Internet Speed Test')
+        sp.cprint('Thanks for using Python Internet Speed Test','HEADER')
         pass
 
 

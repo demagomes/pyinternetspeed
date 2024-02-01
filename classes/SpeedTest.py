@@ -67,7 +67,7 @@ class SpeedTest:
         print('Working  on results.......', end='\r')
         results_dict = s.results.dict()   
         printResults = 'Date: ' + time.asctime() + '|' + 'Download Speed (mbps): ' + str(round(dmbps)) + '|' + 'Upload Speed (mbps): ' + str(round(umbps)) + '|' + 'Ping: ' + str(results_dict["ping"])
-        self.cprint(printResults,'OKCYAN')
+        self.cprint(printResults,'INFO')
         self.saveresultstocsv(self.getfilename(),str(round(dmbps)),str(round(umbps)),str(results_dict["ping"])) 
     
     def printheader(self):

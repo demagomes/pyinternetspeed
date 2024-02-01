@@ -22,9 +22,9 @@ def test_print_header(capsys,getobjinstance):
     assert len(all_outputs) == 4
 
     # test each row's content
-    assert all_outputs[0] == '\x1b[95mPython Internet Speed Test\x1b[0m'
-    assert all_outputs[1] == '\x1b[92mhttps://github.com/demagomes/pyinternetspeed\x1b[0m'
-    assert all_outputs[2] == '\x1b[92mPlease press Control+C to end the program\x1b[0m'
+    assert all_outputs[0] == '\x1b[35;1mPython Internet Speed Test\x1b[0m'
+    assert all_outputs[1] == '\x1b[37mhttps://github.com/demagomes/pyinternetspeed\x1b[0m'
+    assert all_outputs[2] == '\x1b[37mPlease press Control+C to end the program\x1b[0m'
     assert all_outputs[3] == ''
 
 # Test cprint function output
@@ -37,7 +37,7 @@ def test_cprint(capsys,getobjinstance):
     captured = capsys.readouterr()
 
      # test output
-    assert captured.out== '\x1b[95mUnit Test Header\x1b[0m\n'
+    assert captured.out== '\x1b[35;1mUnit Test Header\x1b[0m\n'
 
 # Test getfilename function return
 def test_getfilename(getobjinstance):
