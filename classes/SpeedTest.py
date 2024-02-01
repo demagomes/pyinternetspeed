@@ -21,8 +21,8 @@ class SpeedTest:
             print(f"{tc.OKBLUE}{message}{tc.ENDC}")
         elif type == 'OKCYAN':
             print(f"{tc.OKCYAN}{message}{tc.ENDC}")
-        elif type == 'OKGREEN':
-            print(f"{tc.OKGREEN}{message}{tc.ENDC}")
+        elif type == 'WHITE':
+            print(f"{tc.WHITE}{message}{tc.ENDC}")
 
     def getfilename(self):
         today = datetime.date.today().strftime("%d-%m-%Y")
@@ -72,8 +72,8 @@ class SpeedTest:
     
     def printheader(self):
         self.cprint('Python Internet Speed Test','HEADER')
-        self.cprint('https://github.com/demagomes/pyinternetspeed','INFO')
-        self.cprint('Please press Control+C to end the program','INFO')
+        self.cprint('https://github.com/demagomes/pyinternetspeed','WHITE')
+        self.cprint('Please press Control+C to end the program','WHITE')
 
 
 
