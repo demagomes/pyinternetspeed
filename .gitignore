@@ -139,3 +139,4 @@ dmypy.json
 drafts.py
 .gitignore
 speed_results.csv
+.vscode/settings.json
